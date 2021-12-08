@@ -1,0 +1,8 @@
+<?php
+
+require_once __DIR__."/../app/functions.php";
+require_once __DIR__."/../app/handler.php";
+
+handle();
+
+
