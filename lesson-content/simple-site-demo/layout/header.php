@@ -18,7 +18,12 @@
 
     <div class="nav-scroller py-1 mb-2">
         <nav class="nav d-flex justify-content-between">
-            <?php foreach ($arr3 as $k => $v): ?>
+            <?php
+            $arr3 = [
+                    "/" => "main page",
+                    "/news" => "news",
+            ];
+            foreach ($arr3 as $k => $v): ?>
                 <a class="p-2 link-secondary2" href="<?=$k?>"><?=$v?></a>
             <?php endforeach; ?>
 

@@ -54,7 +54,6 @@
 ?>
 
 <?php
-    //
     echo $content;
 ?>
 <?php
