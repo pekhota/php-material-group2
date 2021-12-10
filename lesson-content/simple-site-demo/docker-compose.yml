@@ -3,6 +3,8 @@ services:
   # docker compose up -d <----
   # docker-compose up -d <----
   # docker-compose: https://docs.docker.com/compose/install/
+
+  # docker compose down
   app:
     build: ./
     volumes:

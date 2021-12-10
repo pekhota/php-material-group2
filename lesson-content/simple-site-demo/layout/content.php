@@ -170,7 +170,6 @@
 
         <?php
         require __DIR__."/sidebar.php";
-        //            @include __DIR__."/layout/sidebar1.php";
         ?>
     </div>
 
