@@ -52,10 +52,11 @@
     // header
     echo $header;
 ?>
-
+<main class="container">
 <?php
     echo $content;
 ?>
+</main>
 <?php
 echo $footer;
 ?>
