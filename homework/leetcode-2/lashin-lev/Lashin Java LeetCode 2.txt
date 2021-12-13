@@ -1,0 +1,25 @@
+class Solution {
+    public String longestPalindrome(String s)
+    {
+        char[] c=s.toCharArray();
+        int len=c.length, clen=len;
+        if(len<2)
+            return s;
+        for(; clen>1; clen--)
+            for(int y=0; y<len-clen+1; y++)
+                if(isPalinDrome(c, y, y+clen-1))
+                    return new String(c, y, clen);
+        return String.valueOf(c[0]);
+    }
+
+    boolean isPalinDrome(char[] c, int x, int y)
+    {
+        while(x<y)
+        {
+            if(c[x]!=c[y])
+                return false;
+            ++x;--y;
+        }
+        return true;
+    }
+}
