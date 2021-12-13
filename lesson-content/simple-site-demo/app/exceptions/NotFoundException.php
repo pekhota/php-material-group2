@@ -1,5 +1,7 @@
 <?php
 
-class NotFoundException extends Exception implements Throwable
+namespace App\Exceptions;
+
+class NotFoundException extends \Exception implements \Throwable
 {
 }

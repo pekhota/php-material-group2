@@ -1,5 +1,7 @@
 <?php
 
+namespace Framework;
+
 class Router
 {
     const GET = "GET";
