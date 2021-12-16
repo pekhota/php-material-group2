@@ -13,11 +13,11 @@
                 </a>
                 <a class="btn btn-sm btn-outline-secondary" href="/login">Login</a>
                 &nbsp;
-                <a class="btn btn-sm btn-outline-secondary" href="#">Sign up</a>
+                <a class="btn btn-sm btn-outline-secondary" href="/signup">Sign up</a>
             </div>
         </div>
     </header>
-
+<p>Latest btc price: <?=$bitcoinPrice?></p>
     <div class="nav-scroller py-1 mb-2">
         <nav class="nav d-flex justify-content-between">
             <?php

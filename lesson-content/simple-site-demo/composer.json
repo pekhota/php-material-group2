@@ -1,0 +1,14 @@
+{
+    "name": "alex/simple-site-demo",
+    "autoload": {
+    },
+    "authors": [
+        {
+            "name": "Alexander Pekhota",
+            "email": "pekhota.alex@gmail.com"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "^7.4"
+    }
+}

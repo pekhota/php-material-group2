@@ -1,19 +1,23 @@
 <?php
 
-$appController = new \App\Controllers\Application($view);
-$loginController = new \App\Controllers\Login($view);
+$appController = new \App\Controllers\Main($view, $conn);
+$loginController = new \App\Controllers\Login($view, $conn);
+$userController = new \App\Controllers\User($view, $conn);
+$notificationController = new \App\Controllers\Notification($view, $conn);
+
+$authorisedMiddleware = new \App\Middleware\Authorised();
 
 $router->get("/", [$appController, 'index']);
 $router->get("/login", [$loginController, 'showLoginForm']);
-$router->get("/user", function () use ($view) {
-    if (!empty($_SESSION['user'])) {
-        echo "Hello ".$_SESSION['user'];
-    } else {
-        throw new RuntimeException("Private area");
-    }
-});
-$router->post("/login", [$loginController, 'handleForm']);
+$router->post("/login", [$loginController, 'handleLoginForm']);
 
+$router->get("/signup", [$loginController, 'showSignupForm']);
+$router->post("/signup", [$loginController, 'handleSignUpForm']);
+
+$router->middleware([$authorisedMiddleware])->group(function (\Framework\Router $r) use ($userController, $notificationController) {
+    $r->get("/user", [$userController, 'test']);
+    $r->get("/notification", [$notificationController, 'sendEmail']);
+});
 
 $router->get("/subscribe", function () use ($view) {
     $content = $view->render("layout/base", [

@@ -49,8 +49,9 @@
 <body>
 
 <?php
-    // header
-    echo $header;
+    echo view("layout/header", [
+        'bitcoinPrice' => $bitcoinPrice,
+    ]);
 ?>
 <main class="container">
 <?php
@@ -58,7 +59,7 @@
 ?>
 </main>
 <?php
-echo $footer;
+    echo view("layout/footer");
 ?>
 
 </body>

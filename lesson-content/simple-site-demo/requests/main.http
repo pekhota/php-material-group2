@@ -1,0 +1,12 @@
+### Blockchain infor request
+#
+# Some request
+#
+
+GET https://blockchain.info/ticker
+
+### Main
+#
+#
+
+GET http://localhost:8080/login
