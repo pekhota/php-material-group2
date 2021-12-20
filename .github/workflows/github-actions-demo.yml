@@ -24,6 +24,10 @@ jobs:
       - name: PHP Code Style (phpcs)
         uses: chindit/actions-phpcs@master
 
+      - name: PWd
+        run: |
+          pwd
+
       - name: Check web.php
         run: |
           php -l lesson-content/simple-site-demo/routes/web.php

@@ -1,6 +1,6 @@
 <?php
 
-$appController = new \App\Controllers\Main($view, $conn)
+$appController = new \App\Controllers\Main($view, $conn);
 $loginController = new \App\Controllers\Login($view, $conn);
 $userController = new \App\Controllers\User($view, $conn);
 $notificationController = new \App\Controllers\Notification($view, $conn);
