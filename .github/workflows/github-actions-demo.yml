@@ -17,6 +17,8 @@ jobs:
         run: |
           ls ${{ github.workspace }}
 
-      - name: Check web.php
-        run: |
-          php -l lesson-content/simple-site-demo/routes/web.php
+      - uses: michaelw90/PHP-Lint@master
+
+#      - name: Check web.php
+#        run: |
+#          php -l lesson-content/simple-site-demo/routes/web.php
