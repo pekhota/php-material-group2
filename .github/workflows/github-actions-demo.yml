@@ -19,4 +19,4 @@ jobs:
 
       - name: Check web.php
         run: |
-          php -l ./lesson-content/simple-site-demo/routes/web.php
+          php -l ${{ github.workspace }}/lesson-content/simple-site-demo/routes/web.php
