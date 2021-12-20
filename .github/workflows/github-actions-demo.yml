@@ -19,6 +19,9 @@ jobs:
 
       - uses: michaelw90/PHP-Lint@master
 
+      - name: PHP Code Style (phpcs)
+        uses: chindit/actions-phpcs@master
+
 #      - name: Check web.php
 #        run: |
 #          php -l lesson-content/simple-site-demo/routes/web.php
