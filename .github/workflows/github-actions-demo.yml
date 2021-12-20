@@ -28,6 +28,10 @@ jobs:
         run: |
           pwd
 
+      - name: LS
+        run: |
+          ls
+
       - name: Check web.php
         run: |
           php -l lesson-content/simple-site-demo/routes/web.php
