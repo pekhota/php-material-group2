@@ -48,19 +48,8 @@ class Router
             $res = preg_match("~^{$route}$~", $this->requestUri, $matches);
 
             if ($res === 1) {
-                if (is_array($handler)) {
-                    if (method_exists($handler[0], "before")) {
-                        call_user_func_array([$handler[0], "before"], []);
-                    }
-                }
-
                 call_user_func_array($handler, $matches);
 
-                if (is_array($handler)) {
-                    if (method_exists($handler[0], "after")) {
-                        call_user_func_array([$handler[0], "after"], []);
-                    }
-                }
                 $found = true;
             }
         }
@@ -75,7 +64,7 @@ class Router
         return $this;
     }
 
-    public function group() {
-
+    public function group(Callable $fn) {
+        $fn($this);
     }
 }

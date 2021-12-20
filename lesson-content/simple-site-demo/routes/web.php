@@ -5,19 +5,27 @@ $loginController = new \App\Controllers\Login($view, $conn);
 $userController = new \App\Controllers\User($view, $conn);
 $notificationController = new \App\Controllers\Notification($view, $conn);
 
-$authorisedMiddleware = new \App\Middleware\Authorised();
+$authMiddleware = new \App\Middleware\Authorised();
+$demoMiddleware = new \App\Middleware\Demo();
+$csrfMiddleware = new \App\Middleware\CSRF();
 
 $router->get("/", [$appController, 'index']);
-$router->get("/login", [$loginController, 'showLoginForm']);
-$router->post("/login", [$loginController, 'handleLoginForm']);
+$router->get("/posts/(\d+)", [$appController, 'demo']);
+$router->middleware([$demoMiddleware])->get("/login", [$loginController, 'showLoginForm']);
+$router->middleware([$csrfMiddleware])->post("/login", [$loginController, 'handleLoginForm']);
 
 $router->get("/signup", [$loginController, 'showSignupForm']);
 $router->post("/signup", [$loginController, 'handleSignUpForm']);
 
-$router->middleware([$authorisedMiddleware])->group(function (\Framework\Router $r) use ($userController, $notificationController) {
+$router->middleware([$authMiddleware])->group(function (\Framework\Router $r) use ($userController, $notificationController) {
+    // ->middleware([$authMiddleware])
+    // context
     $r->get("/user", [$userController, 'test']);
     $r->get("/notification", [$notificationController, 'sendEmail']);
 });
+
+//$router->middleware([$authMiddleware])->get("/user", [$userController, 'test']);
+//$router->middleware([$authMiddleware])->get("/notification", [$notificationController, 'sendEmail']);
 
 $router->get("/subscribe", function () use ($view) {
     $content = $view->render("layout/base", [

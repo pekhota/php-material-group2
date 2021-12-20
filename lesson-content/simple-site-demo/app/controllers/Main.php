@@ -19,6 +19,10 @@ class Main
         $this->connection = $conn;
     }
 
+    public function demo($arg1, $arg2) {
+        dd($arg2);
+    }
+
     public function index() {
         $client = new \GuzzleHttp\Client();
         $response = $client->request('GET', 'https://blockchain.info/ticker');
