@@ -14,10 +14,9 @@ jobs:
           coverage: xdebug
           tools: php-cs-fixer, phpunit
 
-      - name: List files in the repository
+      - name: Check web.php
         run: |
-          ls ${{ github.workspace }}
-
+          php -l lesson-content/simple-site-demo/routes/web.php
 
       - name: Check php errors
         uses: michaelw90/PHP-Lint@master
@@ -25,14 +24,4 @@ jobs:
       - name: PHP Code Style (phpcs)
         uses: chindit/actions-phpcs@master
 
-      - name: PWd
-        run: |
-          pwd
 
-      - name: LS
-        run: |
-          ls
-
-      - name: Check web.php
-        run: |
-          php -l lesson-content/simple-site-demo/routes/web.php
