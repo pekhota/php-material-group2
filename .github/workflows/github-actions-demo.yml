@@ -18,8 +18,8 @@ jobs:
         run: |
           php -l lesson-content/simple-site-demo/routes/web.php
 
-      - name: Check php errors
-        uses: michaelw90/PHP-Lint@master
+#      - name: Check php errors
+#        uses: michaelw90/PHP-Lint@master
 
       - name: PHP Code Style (phpcs)
         uses: chindit/actions-phpcs@master
