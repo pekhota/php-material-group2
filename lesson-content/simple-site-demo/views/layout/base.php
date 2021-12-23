@@ -53,7 +53,7 @@
         'bitcoinPrice' => $bitcoinPrice,
     ]);
 ?>
-<main class="container">
+<main class="container" id="main">
 <?php
     echo $content;
 ?>
@@ -62,5 +62,64 @@
     echo view("layout/footer");
 ?>
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        let counter = 1
+
+        cb = function () {
+            $.post( "/ajax",
+                {
+                    message: "hello world" + counter
+                },
+                function( data ) {
+                    // document.getElementById('btc-price-block').innerHTML = httpRequest.responseText
+                    $("#btc-price-block").html(data);
+                    counter++
+                }
+            );
+        }
+
+        cb()
+        setInterval(cb, 5*1000)
+    })
+
+    // document.addEventListener('DOMContentLoaded', function(){
+    //     console.log('Готов!');
+    // });
+
+    // let httpRequest;
+    // if (window.XMLHttpRequest) { // Mozilla, Safari, ...
+    //     httpRequest = new XMLHttpRequest();
+    // } else if (window.ActiveXObject) { // IE
+    //     httpRequest = new ActiveXObject("Microsoft.XMLHTTP");
+    // }
+    //
+    // // let counter = 1
+    //
+    // cb = function () {
+    //     httpRequest.open('GET', 'http://localhost:8080/ajax/' + counter, true);
+    //     httpRequest.send(null);
+    //     counter++
+    // }
+    //
+    // cb()
+    // setInterval(cb, 5*1000)
+    //
+    // httpRequest.onreadystatechange = function(){
+    //     if (httpRequest.readyState == 4) {
+    //         if (httpRequest.status == 200) {
+    //             let elem = document.getElementById('btc-price-block')
+    //             elem.innerHTML = httpRequest.responseText
+    //         } else {
+    //             alert('С запросом возникла проблема.');
+    //         }
+    //     } else {
+    //         // все ещё не готово
+    //     }
+    // };
+    //
+    // console.log(httpRequest)
+</script>
 </body>
 </html>

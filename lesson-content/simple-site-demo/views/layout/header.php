@@ -17,7 +17,9 @@
             </div>
         </div>
     </header>
-<p>Latest btc price: <?=$bitcoinPrice?></p>
+<p id="example-ajax-block">
+    Latest btc price: <span id="btc-price-block"><?=$bitcoinPrice?></span>
+</p>
     <div class="nav-scroller py-1 mb-2">
         <nav class="nav d-flex justify-content-between">
             <?php

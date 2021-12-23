@@ -10,6 +10,7 @@ $demoMiddleware = new \App\Middleware\Demo();
 $csrfMiddleware = new \App\Middleware\CSRF();
 
 $router->get("/", [$appController, 'index']);
+$router->post("/ajax", [$appController, 'ajax']);
 $router->get("/posts/(\d+)", [$appController, 'demo']);
 $router->middleware([$demoMiddleware])->get("/login", [$loginController, 'showLoginForm']);
 $router->middleware([$csrfMiddleware])->post("/login", [$loginController, 'handleLoginForm']);

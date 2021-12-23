@@ -23,17 +23,22 @@ class Main
         dd($arg2);
     }
 
-    public function index() {
-        $client = new \GuzzleHttp\Client();
-        $response = $client->request('GET', 'https://blockchain.info/ticker');
-        $ticker = json_decode($response->getBody()->getContents(), true);
-        $usdPrice = $ticker['USD']['last'];
+    public function ajax() {
+            dd($_POST['message']);
+//        $client = new \GuzzleHttp\Client();
+//        $response = $client->request('GET', 'https://blockchain.info/ticker');
+//        $ticker = json_decode($response->getBody()->getContents(), true);
+//        $usdPrice = $ticker['USD']['last'];
+//        echo $usdPrice;
+//        echo $this->view->render("ajax");
+    }
 
+    public function index() {
         $stm = $this->connection->query("SELECT * FROM posts LIMIT 5");
         $rows = $stm->fetchAll();
 
         $content =       $this->view->render("layout/base", [
-            'bitcoinPrice' => $usdPrice,
+            'bitcoinPrice' => "",
             'content' => $this->view->render("layout/content", [
                 'rows' => $rows
             ]),
